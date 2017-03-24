@@ -14,7 +14,6 @@ variable "region" {
 
 variable "zone" {
     type = "string"
-    default = "us-east1-d"
 }
 
 provider "google" {

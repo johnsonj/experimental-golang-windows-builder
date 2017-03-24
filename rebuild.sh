@@ -1,13 +1,13 @@
 set -e
 
 # Destroy existing
- yes "yes" | terraform destroy --var "projectid=${PROJECT_ID}"
+ yes "yes" | terraform destroy --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}"
 
 # Clean up instance info
 rm -f instance.txt
 
 # Create resources
-terraform apply --var "projectid=${PROJECT_ID}"
+terraform apply --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}"
 
 echo "Waiting 80 seconds to fetch logs, Ctrl+C if you aren't interested"
 sleep 80
