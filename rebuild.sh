@@ -1,4 +1,5 @@
 set -e
+set -u
 
 # Destroy existing
  yes "yes" | terraform destroy --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}"

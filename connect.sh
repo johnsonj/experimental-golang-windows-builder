@@ -1,4 +1,6 @@
 set -e
+set -u
+
 # Set, fetch credentials
 yes "Y" | gcloud compute reset-windows-password buildlet-win2016 --user wingopher --project="${PROJECT_ID}" --zone="${ZONE}" > instance.txt
 
