@@ -1,2 +1,3 @@
 terraform.tfstate*
+instance.txt
 .envrc
