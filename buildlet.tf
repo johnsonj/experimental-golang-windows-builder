@@ -9,7 +9,6 @@ variable "projectid" {
 
 variable "region" {
     type = "string"
-    default = "us-east1"
 }
 
 variable "zone" {

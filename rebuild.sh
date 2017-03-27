@@ -1,14 +1,17 @@
 set -e
 set -u
 
+ZONE="us-east1-d"
+REGION="us-east1"
+
 # Destroy existing
- yes "yes" | terraform destroy --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}"
+ yes "yes" | terraform destroy --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}" --var "region=${REGION}"
 
 # Clean up instance info
 rm -f instance.txt
 
 # Create resources
-terraform apply --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}"
+terraform apply --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}" --var "region=${REGION}"
 
 echo "Waiting 120 seconds for sysprep to finish"
 sleep 120
