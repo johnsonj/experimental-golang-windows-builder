@@ -1,6 +1,5 @@
-variable "windows_2016_image" {
+variable "image" {
     type = "string"
-    default = "windows-server-2016-dc-v20170227"
 }
 
 variable "projectid" {
@@ -70,15 +69,15 @@ resource "google_compute_firewall" "intra-subnet-open" {
   source_tags = ["internal"]
 }
 
-resource "google_compute_instance" "buildlet-win2016" {
-  name         = "buildlet-win2016"
+resource "google_compute_instance" "buildlet-windows" {
+  name         = "buildlet-windows"
   machine_type = "n1-standard-2"
   zone         = "${var.zone}"
 
   tags = ["allow-dev-access", "internal"]
 
   disk {
-    image = "${var.windows_2016_image}"
+    image = "${var.image}"
   }
 
   network_interface {

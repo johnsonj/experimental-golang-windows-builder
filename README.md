@@ -10,7 +10,7 @@ go get github.com/hashicorp/terraform
 ## Build the instance
 ```bash
 export PROJECT_ID=YOUR_GCP_PROJECT
-export ZONE=us-east1-c 
+export IMAGE=windows-server-2016-dc-core-v20170214
 
 ./rebuild.sh
 ```
