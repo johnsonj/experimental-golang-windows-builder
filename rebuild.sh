@@ -31,5 +31,13 @@ echo "Waiting 60 seconds for the instance to boot"
 sleep 60
 external_ip=$(gcloud compute instances describe buildlet-win2016 --project="${PROJECT_ID}" --zone="${ZONE}" --format="value(networkInterfaces[0].accessConfigs[0].natIP)")
 echo curl "http://${external_ip}"
-curl "http://${external_ip}"
+output=$(curl "http://${external_ip}")
+echo "${output}"
 
+if [[ ${output} == *"buildlet"* ]]; then
+	echo "success!"
+	exit 0
+else
+	echo "failure"
+	exit 1
+fi
