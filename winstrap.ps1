@@ -38,6 +38,7 @@ New-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -N
 new-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name Disabled -Value 1 -Force | Out-Null
 new-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name DontShowUI -Value 1 -Force | Out-Null
 netsh advfirewall set allprofiles state off
+netsh firewall set opmode mode=disable profile=ALL
 
 # Download buildlet
 $url = "https://storage.googleapis.com/go-builder-data/buildlet-stage0.windows-amd64"
