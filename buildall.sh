@@ -12,4 +12,6 @@ images=(
 for image in "${images[@]}"; do
     echo $image
     IMAGE=${image} ./rebuild.sh
+    mkdir -p out
+    ./test_buildlet.sh |& tee out/${image}.txt
 done
