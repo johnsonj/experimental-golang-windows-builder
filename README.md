@@ -21,6 +21,11 @@ external_ip=$(gcloud compute instances describe buildlet-win2016 --project=${PRO
 curl http://${external_ip}
 ```
 
+## Build/test golang
+```bash
+./test_buildlet.sh
+```
+
 ## Troubleshoot via RDP
 ```bash
 ./connect.sh
