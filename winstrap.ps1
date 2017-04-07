@@ -30,8 +30,8 @@ function Get-FileFromUrl(
 }
 
 # Disable automatic updates, windows firewall, and error reporting
-#
-# - They’ll just interrupt the builds later. 
+# 
+# - They'll just interrupt the builds later. 
 # - We don't care about security since this isn't going to be Internet-facing. 
 # - No ports will be accessible once the image is built.
 New-ItemProperty "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name NoAutoUpdate -Value 1 -Force | Out-Null
