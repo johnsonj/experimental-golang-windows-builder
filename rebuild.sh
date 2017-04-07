@@ -13,8 +13,8 @@ rm -f instance.txt
 # Create resources
 terraform apply --var "projectid=${PROJECT_ID}" --var "zone=${ZONE}" --var "region=${REGION}" --var "image=${IMAGE}"
 
-echo "Waiting 120 seconds for sysprep to finish"
-sleep 120
+echo "Waiting 60 seconds for sysprep to finish"
+sleep 60
 
 echo ""
 echo "Start logs:"
