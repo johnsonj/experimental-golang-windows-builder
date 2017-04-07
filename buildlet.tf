@@ -20,20 +20,11 @@ provider "google" {
     credentials = ""
 }
 
-resource "google_compute_network" "buildlet" {
-  name       = "buildlet"
-}
-
-resource "google_compute_subnetwork" "buildlet-subnet-1" {
-  name          = "buildlet-subnet-${var.region}"
-  ip_cidr_range = "10.0.0.0/24"
-  network       = "${google_compute_network.buildlet.self_link}"
-}
 
 // Allow dev access buildlet
 resource "google_compute_firewall" "buildlet-dev-access" {
   name    = "buildlet-dev-access"
-  network = "${google_compute_network.buildlet.name}"
+  network = "default"
 
   allow {
     protocol = "icmp"
@@ -47,27 +38,6 @@ resource "google_compute_firewall" "buildlet-dev-access" {
   target_tags = ["allow-dev-access"]
 }
 
-// Allow all traffic within subnet
-resource "google_compute_firewall" "intra-subnet-open" {
-  name    = "buildlet-intra-subnet-open"
-  network = "${google_compute_network.buildlet.name}"
-
-  allow {
-    protocol = "icmp"
-  }
-
-  allow {
-    protocol = "tcp"
-    ports    = ["1-65535"]
-  }
-
-  allow {
-    protocol = "udp"
-    ports    = ["1-65535"]
-  }
-
-  source_tags = ["internal"]
-}
 
 resource "google_compute_instance" "buildlet-windows" {
   name         = "buildlet-windows"
@@ -81,7 +51,7 @@ resource "google_compute_instance" "buildlet-windows" {
   }
 
   network_interface {
-    subnetwork = "${google_compute_subnetwork.buildlet-subnet-1.name}"
+    network = "default"
     access_config {
       // Ephemeral IP
     }
