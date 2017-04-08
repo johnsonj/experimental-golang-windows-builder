@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e -u
 
-hostname="$(grep ip_address instance.txt | cut -d ':' -f 2 | xargs echo -n)"
+hostname="$1"
 BUILDLET="windows-amd64-gce@${hostname}"
 
 echo "Pushing GCC, go1.4, go to buildlet"

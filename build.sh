@@ -35,7 +35,9 @@ gcloud compute instances create --machine-type="$MACHINE_TYPE" "$INSTANCE_NAME" 
 echo "Waiting 120 seconds for sysprep to finish"
 sleep 120
 
+echo ""
 echo "Start logs:"
+echo ""
 gcloud compute instances get-serial-port-output "$INSTANCE_NAME" --zone="$ZONE" --project="$PROJECT_ID" 
 
 # Set, fetch credentials

@@ -2,9 +2,10 @@ set -e
 set -u
 
 ZONE=us-east1-d
+INSTANCE_NAME="${1:-golang-buildlet-test}"
 
 # Set, fetch credentials
-yes "Y" | gcloud compute reset-windows-password buildlet-windows --user wingopher --project="${PROJECT_ID}" --zone="${ZONE}" > instance.txt
+yes "Y" | gcloud compute reset-windows-password "${INSTANCE_NAME}" --user wingopher --project="${PROJECT_ID}" --zone="${ZONE}" > instance.txt
 
 echo ""
 echo "Instance credentials: "
