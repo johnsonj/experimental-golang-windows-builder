@@ -16,7 +16,7 @@ for image in "${!public_images[@]}"; do
     prefix=$image
     base_image=${public_images[$image]}
 
-    BASE_IMAGE="$base_image" IMAGE_PROJECT='windows-cloud' ./rebuild.sh "$prefix" |& tee "out/${base_image}.txt" &
+    BASE_IMAGE="$base_image" IMAGE_PROJECT='windows-cloud' ./build.sh "$prefix" |& tee "out/${base_image}.txt" &
 done
 
 
